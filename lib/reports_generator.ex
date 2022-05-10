@@ -2,13 +2,13 @@ defmodule ReportsGenerator do
   def build(filename) do
     "reports/#{filename}"
     |> File.stream!()
-    |> Enum.reduce(%{}, fn line, acc ->
+    |> Enum.reduce(init_report_acc(30), fn line, acc ->
       [id, _name, price] = parse_line(line)
 
-      oldPrice = acc[id] || 0
-      newPrice = oldPrice + price
+      old_price = acc[id]
+      new_price = old_price + price
 
-      Map.put(acc, id, newPrice)
+      Map.put(acc, id, new_price)
     end)
   end
 
@@ -18,4 +18,6 @@ defmodule ReportsGenerator do
     |> String.split(",")
     |> List.update_at(2, &String.to_integer/1)
   end
+
+  defp init_report_acc(maxId), do: Enum.into(1..maxId, %{}, &{Integer.to_string(&1), 0})
 end
