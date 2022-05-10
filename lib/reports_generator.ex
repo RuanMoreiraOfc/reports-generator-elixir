@@ -1,8 +1,8 @@
 defmodule ReportsGenerator do
   alias ReportsGenerator.Parser
 
-  def build(filename) do
-    "reports/#{filename}"
+  def build(file) do
+    file
     |> Parser.parse_file()
     |> Enum.reduce(init_report_acc(30), &sum_prices/2)
   end
