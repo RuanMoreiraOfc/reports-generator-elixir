@@ -86,5 +86,19 @@ defmodule ReportsGeneratorTest do
 
       assert response === expected_response
     end
+
+    test "returns the most consumed food when `option` is 'foods'" do
+      file = "reports/report_test.csv"
+      option = "foods"
+
+      expected_response = {:ok, {"esfirra", 3}}
+
+      response =
+        file
+        |> ReportsGenerator.build()
+        |> ReportsGenerator.retrieve_higher_value(option)
+
+      assert response === expected_response
+    end
   end
 end
