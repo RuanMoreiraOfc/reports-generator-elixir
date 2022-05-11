@@ -58,6 +58,20 @@ defmodule ReportsGeneratorTest do
     end
   end
 
+  describe "build_many/2" do
+    test "returns error when `files` is not a list" do
+      files = {:any, :any}
+
+      expected_response = {:error, "Please provide a list of pahts for the files!"}
+
+      response =
+        files
+        |> ReportsGenerator.build_many()
+
+      assert response === expected_response
+    end
+  end
+
   describe "retrieve_higher_value/2" do
     test "returns error when `option` is invalid" do
       file = "reports/report_test.csv"
