@@ -35,17 +35,17 @@ defmodule ReportsGenerator do
     }
   end
 
-  defp sum_values([id, food_name, price], %{"foods" => foods, "users_bill" => users_bill}) do
-    summed_foods = Map.put(foods, food_name, foods[food_name] + 1)
-    summed_users_bill = Map.put(users_bill, id, users_bill[id] + price)
-
-    %{"foods" => summed_foods, "users_bill" => summed_users_bill}
-  end
-
   defp init_report_acc(maxId) do
     foods = Enum.into(@available_foods, %{}, &{&1, 0})
     users_bill = Enum.into(1..maxId, %{}, &{Integer.to_string(&1), 0})
 
     %{"foods" => foods, "users_bill" => users_bill}
+  end
+
+  defp sum_values([id, food_name, price], %{"foods" => foods, "users_bill" => users_bill}) do
+    summed_foods = Map.put(foods, food_name, foods[food_name] + 1)
+    summed_users_bill = Map.put(users_bill, id, users_bill[id] + price)
+
+    %{"foods" => summed_foods, "users_bill" => summed_users_bill}
   end
 end
