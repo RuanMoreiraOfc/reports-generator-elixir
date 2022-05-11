@@ -42,9 +42,9 @@ defmodule ReportsGenerator do
     %{"foods" => foods, "users_bill" => users_bill}
   end
 
-  defp sum_values([id, food_name, price], %{"foods" => foods, "users_bill" => users_bill}) do
+  defp sum_values([id, food_name, price], %{"foods" => foods, "users_bill" => usersBill}) do
     summed_foods = Map.put(foods, food_name, foods[food_name] + 1)
-    summed_users_bill = Map.put(users_bill, id, users_bill[id] + price)
+    summed_users_bill = Map.put(usersBill, id, usersBill[id] + price)
 
     %{"foods" => summed_foods, "users_bill" => summed_users_bill}
   end
