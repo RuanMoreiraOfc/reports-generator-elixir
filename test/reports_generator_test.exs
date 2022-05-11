@@ -54,7 +54,7 @@ defmodule ReportsGeneratorTest do
         file
         |> ReportsGenerator.build()
 
-      assert response === expected_response
+      assert response == expected_response
     end
   end
 
@@ -68,7 +68,7 @@ defmodule ReportsGeneratorTest do
         files
         |> ReportsGenerator.build_many()
 
-      assert response === expected_response
+      assert response == expected_response
     end
 
     test "build the report from multiple file paths" do
@@ -126,7 +126,7 @@ defmodule ReportsGeneratorTest do
         files
         |> ReportsGenerator.build_many()
 
-      assert response === expected_response
+      assert response == expected_response
     end
   end
 
@@ -142,7 +142,7 @@ defmodule ReportsGeneratorTest do
         |> ReportsGenerator.build()
         |> ReportsGenerator.retrieve_higher_value(option)
 
-      assert response === expected_response
+      assert response == expected_response
     end
 
     test "returns the users who spent most when `option` is 'users_bill'" do
@@ -156,7 +156,7 @@ defmodule ReportsGeneratorTest do
         |> ReportsGenerator.build()
         |> ReportsGenerator.retrieve_higher_value(option)
 
-      assert response === expected_response
+      assert response == expected_response
     end
 
     test "returns the most consumed food when `option` is 'foods'" do
@@ -170,7 +170,7 @@ defmodule ReportsGeneratorTest do
         |> ReportsGenerator.build()
         |> ReportsGenerator.retrieve_higher_value(option)
 
-      assert response === expected_response
+      assert response == expected_response
     end
   end
 end
