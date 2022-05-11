@@ -57,4 +57,20 @@ defmodule ReportsGeneratorTest do
       assert response === expected_response
     end
   end
+
+  describe "retrieve_higher_value/2" do
+    test "returns error when `option` is invalid" do
+      file = "reports/report_test.csv"
+      option = "any_invalid_key"
+
+      expected_response = {:error, "Invalid option, only accepeted `foods, users_bill`!"}
+
+      response =
+        file
+        |> ReportsGenerator.build()
+        |> ReportsGenerator.retrieve_higher_value(option)
+
+      assert response === expected_response
+    end
+  end
 end
