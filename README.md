@@ -68,7 +68,7 @@ cd reports-generator-elixir
 mix deps.get
 ```
 
-##### Now run your project with:
+##### Now see the result with:
 
 ###### - to test the project
 
@@ -82,7 +82,7 @@ mix test
 iex -S mix
 ```
 
-##### At the end of the process, just run use the modules
+##### Copy this code to use the module
 
 ```elixir
 "reports/report_complete.csv"
