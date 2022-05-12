@@ -18,9 +18,12 @@ defmodule ReportsGenerator do
   ]
 
   def build(file) do
-    file
-    |> Parser.parse_file()
-    |> Enum.reduce(init_report_acc(30), &sum_values/2)
+    result =
+      file
+      |> Parser.parse_file()
+      |> Enum.reduce(init_report_acc(30), &sum_values/2)
+
+    {:ok, result}
   end
 
   def build_many(files) when not is_list(files) do
@@ -36,7 +39,7 @@ defmodule ReportsGenerator do
     {:ok, result}
   end
 
-  def retrieve_higher_value(report, option)
+  def retrieve_higher_value({:ok, report}, option)
       when option in @retrieve_higher_value_available_options do
     {:ok, Enum.max_by(report[option], fn {_key, value} -> value end)}
   end
@@ -63,7 +66,7 @@ defmodule ReportsGenerator do
   end
 
   defp sum_reports(
-         {:ok, %{"foods" => foods, "users_bill" => usersBill}},
+         {:ok, {:ok, %{"foods" => foods, "users_bill" => usersBill}}},
          %{"foods" => accFoods, "users_bill" => accUsersBill}
        ) do
     merge_maps =
