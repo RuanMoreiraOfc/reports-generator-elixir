@@ -29,7 +29,7 @@ Reports Generator
 
 **Reports Generator** is a simple tool to generate filtered report from a `csv` file, the return data is a map with which food has been more ordered in all the list and the
 
-Project made on Ignite with **[Rafael Camada][btn-tutor]** at Elixir Journey.
+Project made on Ignite with **[Rafael Camarda][btn-tutor]** at Elixir Journey.
 
 ## :triangular_ruler: Technology <span id="id-about"/>
 
